@@ -5,9 +5,38 @@
     xmlns:local="using:Uno.WASM.TemplateBug"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-		<TextBlock Text="Hello, world!" Margin="20" FontSize="30" />
+    mc:Ignorable="d"
+    xmlns:views="using:Dedoose.Views"
+    xmlns:extensions="using:Dedoose.Extensions"
+    >
+    <Grid>
+        <ContentControl 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"
+            MinWidth="30" 
+            MinHeight="30" 
+            HorizontalContentAlignment="Stretch"
+            VerticalContentAlignment="Stretch"
+            >
+            <Grid>
+                <views:SomeView
+                    x:Name="SomeView"
+                    Width="600"
+                    Height="450"
+                    MinWidth="300"
+                    MinHeight="225"
+                    MaxWidth="1200"
+                    MaxHeight="900"
+                    />
+                <Thumb 
+                    Height="15" 
+                    Width="15" 
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Background="Red"
+                    extensions:ResizeExtensions.Target="{Binding ElementName=SomeView}"
+                    />
+            </Grid>
+        </ContentControl>
     </Grid>
 </Page>
